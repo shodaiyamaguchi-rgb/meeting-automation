@@ -10,9 +10,15 @@
         "minutes_data_source_url": "collection://f3605c0a-be8a-410e-86bb-66fc5253394a",
         "template_page_id": "3be2fd3d-feaf-81c0-a349-d945465a77d1"
       },
-      "members": ["中井", "久保", "盛島", "山口"],
-      "slack_channel_id": "",
-      "slack_mention": "＠取締役"
+      "members": [
+        "中井",
+        "久保",
+        "盛島",
+        "山口"
+      ],
+      "slack_channel_id": "C0BH7S9QLKE",
+      "slack_mention": "＠取締役",
+      "slack_channel_name": "04-mgmt-取締役"
     },
     "exec-layer": {
       "label": "経営レイヤー定例",
@@ -23,13 +29,24 @@
         "minutes_data_source_url": "collection://232b1cc0-f19e-430d-a8b7-481a481560ce",
         "template_page_id": "3c52fd3d-feaf-81ff-bbe9-fcd8cf668363"
       },
-      "members": ["中井", "久保", "盛島", "山口", "古本", "多加谷", "藤本", "福有"],
-      "slack_channel_id": "",
-      "slack_mention": "＠経営メンバー"
+      "members": [
+        "中井",
+        "久保",
+        "盛島",
+        "山口",
+        "古本",
+        "多加谷",
+        "藤本",
+        "福有"
+      ],
+      "slack_channel_id": "C07QUGYPW7J",
+      "slack_mention": "＠経営メンバー",
+      "slack_channel_name": "04-mgmt_ボードと執行役員"
     }
   },
   "notes": [
-    "slack_channel_id が空文字のあいだ、各処理はSlackへ投稿せず、投稿予定の本文を出力して終了する（引き継ぎ書 §8 の未決事項）。",
-    "議事録DBの文字起こしURLプロパティは、実体としては『Zoom録画』という名前のまま。Notion側で改名したら prompts/ 内の記載も直すこと。"
+    "slack_channel_id が空文字の会議体では、処理はSlackへ投稿せず、投稿予定の本文を出力して終了する。",
+    "議事録DBの文字起こしURLプロパティは、実体としては『Zoom録画』という名前のまま。Notion側で改名したら prompts/ 内の記載も直すこと。",
+    "経営レイヤー定例の雛形ページ 3c52fd3d-feaf-81ff-bbe9-fcd8cf668363 はゴミ箱にある。A-2 / B-2 の実装前に復元するか、雛形を作り直すこと。"
   ]
 }
