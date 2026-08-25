@@ -10,11 +10,10 @@ SHELL=/bin/bash
 
 # --- B-1 取締役週次定例：会議後の議事録生成 -------------------------------
 #
-# 本番の1本目（会議終了の1時間後）は、開催曜日と時刻が確定してから有効にする。
-# 引き継ぎ書 §8「開催曜日と時刻：未確定」。
-# 例：火曜 10:00-11:00 開催なら、12:00 に実行する。
+# 1本目：会議終了の1時間後。カレンダー上の「取締役mtg」は月曜 10:00-11:00 JST
+# なので 12:00 に実行する。パスを実際の配置に置き換えてから有効にすること。
 #
-# 0 12 * * 2  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes today
+0 12 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes today
 #
 # 2本目（リトライ）。文字起こしの生成が遅れて1本目が空振りした回を拾う。
 # 前日分を対象にするので毎朝動かして構わない。該当する予定がない日は、
@@ -22,6 +21,13 @@ SHELL=/bin/bash
 0 8 * * *  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
 
 # --- 以降は未実装 ----------------------------------------------------------
-# A-1 board-weekly-prep     毎週金曜 09:00
-# A-2 exec-layer-prep       開催2営業日前 09:00
-# B-2 exec-layer-minutes    会議終了の1時間後 ＋ 翌朝08:00
+# A-1 board-weekly-prep   毎週金曜 09:00
+#   0 9 * * 5   cd /path/to/meeting-automation && ./run.sh board-weekly-prep
+#
+# A-2 exec-layer-prep     開催2営業日前 09:00。経営レイヤー定例は 2026-08-24 の回で
+#   隔週→週次（月曜 15:00）に変更されたため、2営業日前は木曜になる。
+#   0 9 * * 4   cd /path/to/meeting-automation && ./run.sh exec-layer-prep
+#
+# B-2 exec-layer-minutes  会議終了の1時間後（月曜 17:00）＋ 翌朝08:00のリトライ
+#   0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today
+#   0 8 * * *   cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday
