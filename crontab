@@ -1,0 +1,27 @@
+# 会議議事録の自動化 / crontab
+#
+#   crontab crontab        で登録、crontab -l で確認
+#
+# 時刻はサーバのローカルタイムゾーンで解釈される。JST以外のサーバに置く場合は
+# CRON_TZ=Asia/Tokyo を効かせること（cronの実装によっては非対応。その場合は
+# UTCへ換算して書く）。
+CRON_TZ=Asia/Tokyo
+SHELL=/bin/bash
+
+# --- B-1 取締役週次定例：会議後の議事録生成 -------------------------------
+#
+# 本番の1本目（会議終了の1時間後）は、開催曜日と時刻が確定してから有効にする。
+# 引き継ぎ書 §8「開催曜日と時刻：未確定」。
+# 例：火曜 10:00-11:00 開催なら、12:00 に実行する。
+#
+# 0 12 * * 2  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes today
+#
+# 2本目（リトライ）。文字起こしの生成が遅れて1本目が空振りした回を拾う。
+# 前日分を対象にするので毎朝動かして構わない。該当する予定がない日は、
+# 何も書かずに報告だけして終了する。
+0 8 * * *  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
+
+# --- 以降は未実装 ----------------------------------------------------------
+# A-1 board-weekly-prep     毎週金曜 09:00
+# A-2 exec-layer-prep       開催2営業日前 09:00
+# B-2 exec-layer-minutes    会議終了の1時間後 ＋ 翌朝08:00
