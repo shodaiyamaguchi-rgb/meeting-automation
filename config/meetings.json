@@ -3,7 +3,6 @@
   "meetings": {
     "board-weekly": {
       "label": "取締役週次定例",
-      "calendar_title_keyword": "取締役mtg",
       "notion": {
         "design_page_id": "3be2fd3d-feaf-815b-a88d-d0d40ba6230e",
         "minutes_database_id": "abbe80af-257c-4358-b0a8-8afee7f88ed1",
@@ -19,11 +18,17 @@
       "slack_channel_id": "C0BH7S9QLKE",
       "slack_mention": "＠取締役",
       "slack_channel_name": "04-mgmt-取締役",
-      "schedule": "月曜 10:00-11:00 JST（週次）"
+      "schedule": "月曜 10:00-11:00 JST（週次）",
+      "calendar_title_keywords": [
+        "取締役週次定例",
+        "取締役mtg"
+      ],
+      "calendar_title_exclude": [
+        "取締役会"
+      ]
     },
     "exec-layer": {
       "label": "経営レイヤー定例",
-      "calendar_title_keyword": "経営レイヤー定例mtg",
       "notion": {
         "design_page_id": "3c52fd3d-feaf-812a-a701-fc0229567378",
         "minutes_database_id": "e3a4b711-5336-496f-b659-b8dec3460afa",
@@ -44,13 +49,18 @@
       "slack_channel_id": "C07QUGYPW7J",
       "slack_mention": "＠経営メンバー",
       "slack_channel_name": "04-mgmt_ボードと執行役員",
-      "schedule": "月曜 15:00-16:00 JST（2026-08-24の回で隔週→週次に変更）"
+      "schedule": "月曜 15:00-16:00 JST（週次。2026-08-24の回で隔週から変更）",
+      "calendar_title_keywords": [
+        "経営レイヤー定例",
+        "経営連携会議"
+      ],
+      "calendar_title_exclude": []
     }
   },
   "notes": [
     "slack_channel_id が空文字の会議体では、処理はSlackへ投稿せず、投稿予定の本文を出力して終了する。",
     "議事録DBの文字起こしURLプロパティは、両DBともZoom運用時代の「Zoom録画」という名前のまま。Notion側で改名したら prompts/ 内の記載も直すこと。",
-    "calendar_title_keyword はカレンダー上の実際の予定名。会議体の正式名称（取締役週次定例／経営レイヤー定例）とは違うので注意。",
+    "calendar_title_keywords はカレンダー上の実際の予定名。定期予定の名前は途中で変わることがある（2026-08-24は「取締役mtg」、08-31は「取締役週次定例」）。いずれか1つに一致すれば対象とし、calendar_title_exclude に一致するものは除く。",
     "ステータスの語彙が2つのDBで揃っていない。取締役週次定例は 事前記入中/自動生成済/確認済/要修正、経営レイヤー定例は 事前記入中/記録済/確認済。"
   ]
 }

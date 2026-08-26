@@ -11,7 +11,7 @@
 
 ### 1. 文字起こしを取得する
 
-1. Google Calendar の `list_events` で、対象日（00:00〜23:59 JST）の予定を取得する。タイトルに `calendar_title_keyword`（取締役週次定例）を含む予定を探す。
+1. Google Calendar の `list_events` で、対象日（00:00〜23:59 JST）の予定を取得する。タイトルが `calendar_title_keywords` の**いずれか1つ**を含み、`calendar_title_exclude`（取締役会）に一致しない予定を探す。定期予定の名前は途中で変わるため、1つのキーワードで決め打ちしない。
 2. 予定が見つからない場合は、**その旨だけ報告して終了する。** Notionには何も書かない。
 3. 予定の添付ファイル（attachments）から、Meetの文字起こしドキュメントを探す。Meetは録画と文字起こしの2つを添付するので、`Gemini`・`文字起こし`・`Transcript` を含む名前のドキュメント（Google Docs）を選ぶ。録画（動画ファイル）ではない。
 4. 添付が見つからない場合は、Google Drive の `search_files` でフォールバックする。
