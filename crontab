@@ -32,7 +32,7 @@ SHELL=/bin/bash
 0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today
 
 # --- リトライ（両会議まとめて） -------------------------------------------
-# 火曜08:00。文字起こしの生成が遅れて月曜の2本が空振りした場合に、前日分を拾う。
+# 火曜12:00。文字起こしの生成が遅れて月曜の2本が空振りした場合に、前日分を拾う。
 # 既にステータスが進んでいれば二重実行を避けて終了する。
-0 8 * * 2   cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
-15 8 * * 2  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday
+0 12 * * 2  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
+15 12 * * 2 cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday
