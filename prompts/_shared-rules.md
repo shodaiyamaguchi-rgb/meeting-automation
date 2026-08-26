@@ -47,6 +47,14 @@
 ## 4. Slack
 
 - `slack_channel_id` が設定されていない会議体では、**Slackへ投稿しない。** 投稿するはずだった本文をそのまま出力して終了する。
+- **`slack_mode` の値で投稿方法を変える。**
+
+  | 値 | 使うツール | 挙動 |
+  |---|---|---|
+  | `draft` | `slack_send_message_draft` | 下書きとして置く。人が確認して送る |
+  | `send` | `slack_send_message` | そのまま投稿する |
+
+  既定は `send`（本投稿）。下書きで様子を見たいときだけ `config/meetings.json` の `slack_mode` を `draft` に変える。**`draft` のときに `slack_send_message` を使わない。**
 - 投稿は敬体で書く。命令調にしない。
 - 該当のない行・ブロックは丸ごと省略する。空行や「（なし）」を並べない。
 - スレッドでの議論を促さない。修正はNotionを直接直してもらう。
