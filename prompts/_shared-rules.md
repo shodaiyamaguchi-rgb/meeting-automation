@@ -66,3 +66,4 @@
 - トグル（`<details>`）の中身はタブでインデントされている。`old_str` / `new_str` の**両方でタブのインデントを保つ**こと。インデントが崩れるとトグルの外に飛び出す。
 - 表は Notion-flavored Markdown の `<table>` / `<tr>` / `<td>` で書く。セルの中に見出し・箇条書き・HTMLタグは入らない（リッチテキストのみ）。
 - 書き込み後、`notion-fetch` で再取得し、🟩 と 🟦 の中身が書き込み前と一致していることを確認する。差分があれば元に戻し、報告する。
+- Slackに貼るページリンクは `https://www.notion.so/（ページIDをハイフンなしで）` の形にする。`notion-fetch` や `notion-query-data-sources` が返す `https://app.notion.com/p/...` 形式のURLをそのままSlackに貼らない（開けないことがある）。
