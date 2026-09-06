@@ -6,7 +6,25 @@
 
 **https://claude.ai/code/routines** → **New routine**
 
-Claude Code on the web のセッション内からは登録できない（`/schedule` はwebセッションでは使えず、MCPツール経由で作ったルーティンにはコネクタが引き継がれない）。ローカルのターミナルからなら `/schedule` でも作れるが、UIのほうが項目が見えるので確実。
+Claude Code on the web のセッション内からは**完結しない。** `/schedule` はwebセッションでは使えず、MCPツール（`create_trigger`）で作ったルーティンは**リポジトリとコネクタが空のまま**になる。ローカルのターミナルからなら `/schedule` でも作れるが、UIのほうが項目が見えるので確実。
+
+### MCPツールで作った場合に、UIで足す必要があるもの
+
+`create_trigger` は名前・スケジュール・プロンプトだけを持ったルーティンを作る。次の2つが空なので、**UIで開いて足さないと動かない。**
+
+| 項目 | 症状 |
+|---|---|
+| リポジトリ（`sources`） | 空。プロンプトが `prompts/*.md` を読もうとしても、リポジトリが無いので読めずに終わる |
+| コネクタ（`mcp_connections`） | 空。Notion / Slack / Calendar / Drive のツールが呼べず、何もできずに終わる |
+
+`connectors` パラメータは組織によっては使えない（このワークスペースでは拒否される）。**足すのはUIから。** 一度足せば以降の発火にも引き継がれる。
+
+2026-09-06 に D-1 / D-2 をこの方法で作成した。
+
+| 処理 | trigger ID |
+|---|---|
+| D-1 | `trig_015ygbuXj6Gc1V4Wdej4QcGt` |
+| D-2 | `trig_014uQjbjmBUTuPYTMGeaF3LL` |
 
 ## 共通設定（7本とも同じ）
 
