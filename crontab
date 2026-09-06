@@ -31,8 +31,24 @@ SHELL=/bin/bash
 # --- B-2 経営レイヤー定例：会議後の議事録生成 -----------------------------
 0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today
 
+# --- D-1 取締役週次定例：執行役員レイヤーへの共有案と承認依頼 --------------
+# 月曜13:00。B-1（12:00）が議事録を生成した直後。案をオーナーへDMするだけで、
+# チャンネルへは投稿しない。
+0 13 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest today
+
+# --- D-2 取締役週次定例：承認を確認して投稿 --------------------------------
+# 月曜18:00。承認が返っていれば本体を投稿し、続けてスレッドへ議論の内容を投稿する。
+# 返っていなければ何もしない。承認の期限は17:30（D-1のDMにそう書いてある）。
+0 18 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest-post today
+
 # --- リトライ（両会議まとめて） -------------------------------------------
 # 火曜12:00。文字起こしの生成が遅れて月曜の2本が空振りした場合に、前日分を拾う。
 # 既にステータスが進んでいれば二重実行を避けて終了する。
 0 12 * * 2  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
 15 12 * * 2 cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday
+
+# D-1 / D-2 にリトライ枠は置かない。D-2 は対象日の当日を過ぎると投稿しないため、
+# 翌日に走らせても必ず空振りする。月曜17:30までに承認が間に合わなかった回は、
+# その週は共有を見送る。どうしても出す場合は手で
+#   ./run.sh board-weekly-exec-digest-post <対象日>
+# を回し、本文の日付表記を確認したうえで投稿すること。
