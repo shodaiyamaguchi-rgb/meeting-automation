@@ -36,9 +36,10 @@ SHELL=/bin/bash
 # チャンネルへは投稿しない。
 0 13 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest today
 
-# --- D-2 取締役週次定例：承認を確認して18:00に予約投稿 ---------------------
-# 月曜17:30。承認が返っていれば18:00に予約投稿し、返っていなければ何もしない。
-30 17 * * 1 cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest-post today
+# --- D-2 取締役週次定例：承認を確認して投稿 --------------------------------
+# 月曜18:00。承認が返っていれば本体を投稿し、続けてスレッドへ議論の内容を投稿する。
+# 返っていなければ何もしない。承認の期限は17:30（D-1のDMにそう書いてある）。
+0 18 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest-post today
 
 # --- リトライ（両会議まとめて） -------------------------------------------
 # 火曜12:00。文字起こしの生成が遅れて月曜の2本が空振りした場合に、前日分を拾う。
