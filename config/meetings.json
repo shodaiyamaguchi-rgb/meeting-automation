@@ -31,9 +31,6 @@
         "post_channel_id": "C07QUGYPW7J",
         "post_channel_name": "04-mgmt_ボードと執行役員",
         "post_time": "18:00",
-        "approval_dm_user_id": "U03S42T7BRU",
-        "approval_dm_user_name": "山口（オーナー）",
-        "approval_deadline": "17:30",
         "approval_words": [
           "承認",
           "OK",
@@ -43,7 +40,8 @@
         ],
         "audience": "執行役員（古本・多加谷・藤本・福有）およびボード",
         "thread_detail": true,
-        "thread_detail_note": "本体（サマリー）を投稿したあと、同じスレッドへ「当日の議論の内容」を続けて投稿する。サマリーだけだと伏せているように見えるため。"
+        "thread_detail_note": "本体（サマリー）を投稿したあと、同じスレッドへ「当日の議論の内容」を続けて投稿する。サマリーだけだと伏せているように見えるため。",
+        "approval_note": "承認はD-1のセッション（チャット）でのオーナーの返信で確認する。Slack DMは使わない。"
       }
     },
     "exec-layer": {
@@ -82,8 +80,8 @@
     "calendar_title_keywords はカレンダー上の実際の予定名。定期予定の名前は途中で変わることがある（2026-08-24は「取締役mtg」、08-31は「取締役週次定例」）。いずれか1つに一致すれば対象とし、calendar_title_exclude に一致するものは除く。",
     "ステータスの語彙が2つのDBで揃っていない。取締役週次定例は 事前記入中/自動生成済/確認済/要修正、経営レイヤー定例は 事前記入中/記録済/確認済。",
     "slack_mode: \"send\" は本投稿、\"draft\" は slack_send_message_draft（下書き）。下書きで様子を見たいときだけ \"draft\" に変える。",
-    "exec_digest は取締役週次定例の議事録から、執行役員レイヤーへ共有してよい範囲だけを抜き出して投稿する処理（D-1／D-2）の設定。post_channel_id を空にすると投稿せず、本文の出力だけで終わる。",
-    "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。"
+    "exec_digest は取締役週次定例の議事録から、執行役員レイヤーへ共有してよい範囲だけを抜き出して投稿する処理（D-1）の設定。post_channel_id を空にすると投稿せず、本文の出力だけで終わる。",
+    "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う（2026-09-08よりSlack DMを廃止し、D-1のセッション内でオーナーに提示・確認してから同じ処理内で投稿する形に変更。D-2は廃止）。"
   ],
   "slack_mode": "send"
 }
