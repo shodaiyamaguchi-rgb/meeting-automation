@@ -24,9 +24,9 @@ SHELL=/bin/bash
 # リトライは火曜08:00にまとめてある（下部を参照）。
 
 # --- A-2 ＋ C 経営レイヤー定例：次回分の準備と取締役提案の転記 ------------
-# 毎週金曜12:00。A-1 と同じ枠で回す。記入期限が当日午前中までなので、金曜に出して
-# おけば週末と月曜午前が記入時間になる。
-0 12 * * 5  cd /path/to/meeting-automation && ./run.sh exec-layer-prep
+# 毎週木曜12:00（開催2営業日前）。オーナーが金曜に不在のため、A-1 の金曜枠から
+# 前倒しした。記入期限が当日午前中までなので、週末と月曜午前が記入時間になる。
+0 12 * * 4  cd /path/to/meeting-automation && ./run.sh exec-layer-prep
 
 # --- B-2 経営レイヤー定例：会議後の議事録生成 -----------------------------
 0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today
