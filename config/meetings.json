@@ -15,6 +15,13 @@
         "盛島",
         "山口"
       ],
+      "board_sheet": {
+        "label": "経営課題ボード",
+        "file_id": "170efEXNoEjhE1Aw7-hLTSoPJdUdowEkep4P1cM5COcM",
+        "sheet_name": "経営課題ボード",
+        "owner_column": "オーナー",
+        "done_statuses": ["解決済", "対応完了", "完了"]
+      },
       "slack_channel_id": "C0BH7S9QLKE",
       "slack_mention": "＠取締役",
       "slack_channel_name": "04-mgmt-取締役",
