@@ -55,6 +55,18 @@
         "template_page_id": "3c72fd3d-feaf-8132-886a-d605d12eebd3",
         "template_page_id_deprecated": "3c52fd3d-feaf-81ff-bbe9-fcd8cf668363（ゴミ箱にあるため使用しない）"
       },
+      "issue_board": {
+        "label": "経営課題ボード／組織課題ボード（Googleスプレッドシート）",
+        "spreadsheet_file_id": "170efEXNoEjhE1Aw7-hLTSoPJdUdowEkep4P1cM5COcM",
+        "sheets": [
+          "経営課題ボード",
+          "組織課題ボード"
+        ],
+        "exclude_status": [
+          "完了",
+          "対応完了"
+        ]
+      },
       "members": [
         "中井",
         "久保",
