@@ -8,7 +8,7 @@
 #
 # 例：
 #   ./run.sh board-weekly-minutes              # 本日の回の議事録を生成
-#   ./run.sh board-weekly-minutes yesterday    # 翌朝08:00のリトライ用
+#   ./run.sh board-weekly-minutes yesterday    # 前日の回（火曜12:00の本番／リトライ用）
 #   ./run.sh board-weekly-minutes 2026-08-25   # 日付を指定して再実行
 #
 # 環境変数：
