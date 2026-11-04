@@ -18,7 +18,7 @@
       "slack_channel_id": "C0BH7S9QLKE",
       "slack_mention": "＠取締役",
       "slack_channel_name": "04-mgmt-取締役",
-      "schedule": "月曜 10:00-11:00 JST（週次）",
+      "schedule": "木曜 11:00-12:00 JST（週次。2026-11-05の回から。それ以前は月曜 10:00-11:00）",
       "calendar_title_keywords": [
         "取締役週次定例",
         "取締役mtg"
@@ -27,6 +27,8 @@
         "取締役会"
       ],
       "exec_digest": {
+        "enabled": false,
+        "disabled_note": "2026-11-04 停止。取締役週次定例が木曜になり、金曜の処理Cが月曜の経営レイヤー定例のアジェンダ4へ転記するため、当日18:00の先行共有は役割が重なる。再開する場合は ROUTINES.md の D-1 / D-2 を再登録し、プロンプトの時刻を直すこと。",
         "label": "取締役週次定例 → 執行役員レイヤーへの共有",
         "post_channel_id": "C07QUGYPW7J",
         "post_channel_name": "04-mgmt_ボードと執行役員",
@@ -83,6 +85,7 @@
     "ステータスの語彙が2つのDBで揃っていない。取締役週次定例は 事前記入中/自動生成済/確認済/要修正、経営レイヤー定例は 事前記入中/記録済/確認済。",
     "slack_mode: \"send\" は本投稿、\"draft\" は slack_send_message_draft（下書き）。下書きで様子を見たいときだけ \"draft\" に変える。",
     "exec_digest は取締役週次定例の議事録から、執行役員レイヤーへ共有してよい範囲だけを抜き出して投稿する処理（D-1／D-2）の設定。post_channel_id を空にすると投稿せず、本文の出力だけで終わる。",
+    "exec_digest は enabled が false の間、D-1 / D-2 を登録しない（停止中）。",
     "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。"
   ],
   "slack_mode": "send"
