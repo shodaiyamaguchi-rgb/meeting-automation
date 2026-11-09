@@ -52,3 +52,12 @@ SHELL=/bin/bash
 # その週は共有を見送る。どうしても出す場合は手で
 #   ./run.sh board-weekly-exec-digest-post <対象日>
 # を回し、本文の日付表記を確認したうえで投稿すること。
+
+# === 経営レイヤー定例 人事版（2026-11-09 に事業版から分割） ===================
+#   経営レイヤーmtg（人事系）  火曜 14:00-15:00（週次）
+# A-3 次回分の準備（金曜12:00）
+0 12 * * 5  cd /path/to/meeting-automation && ./run.sh hr-layer-prep
+# B-3 会議後の議事録生成（会議終了の1時間後）
+0 16 * * 2  cd /path/to/meeting-automation && ./run.sh hr-layer-minutes today
+# リトライ（水曜12:00）
+0 12 * * 3  cd /path/to/meeting-automation && ./run.sh hr-layer-minutes yesterday
