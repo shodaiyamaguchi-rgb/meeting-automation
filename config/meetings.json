@@ -93,13 +93,11 @@
         "古本",
         "多加谷",
         "藤本",
-        "福有",
-        "宮本"
+        "福有"
       ],
-      "members_note": "参加者候補。実際の出席者は招待（取締役・グループマネージャーのグループ宛を含む）に従う。確定したら更新すること。",
-      "slack_channel_id": "",
+      "slack_channel_id": "C07QUGYPW7J",
       "slack_mention": "＠経営メンバー",
-      "slack_channel_name": "（未設定）",
+      "slack_channel_name": "04-mgmt_ボードと執行役員",
       "schedule": "火曜 14:00-15:00 JST（週次）",
       "calendar_title_keywords": [
         "経営レイヤーmtg（人事",
@@ -117,8 +115,8 @@
     "slack_mode: \"send\" は本投稿、\"draft\" は slack_send_message_draft（下書き）。下書きで様子を見たいときだけ \"draft\" に変える。",
     "exec_digest は取締役週次定例の議事録から、執行役員レイヤーへ共有してよい範囲だけを抜き出して投稿する処理（D-1／D-2）の設定。post_channel_id を空にすると投稿せず、本文の出力だけで終わる。",
     "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。",
-    "hr-layer（人事版）は2026-11-09に exec-layer（事業版）から分けた。Notionの設計ページ・議事録DB・雛形は別。slack_channel_id は未設定のため、人事版はSlackへ投稿せず本文の出力で終わる。投稿先が決まったら設定すること。",
-    "人事版のカレンダー上の予定名は「経営レイヤーmtg（人事系）」で、「経営レイヤー定例」を含まない。事業版の calendar_title_exclude に「人事」を入れて取り違えを防いでいる。"
+    "人事版のカレンダー上の予定名は「経営レイヤーmtg（人事系）」で、「経営レイヤー定例」を含まない。事業版の calendar_title_exclude に「人事」を入れて取り違えを防いでいる。",
+    "hr-layer（人事版）は2026-11-09に exec-layer（事業版）から分けた。Notionの設計ページ・議事録DB・雛形は別。参加者とSlackチャンネルは事業版と同じ。"
   ],
   "slack_mode": "send"
 }
