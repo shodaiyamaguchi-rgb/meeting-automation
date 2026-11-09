@@ -47,7 +47,7 @@
       }
     },
     "exec-layer": {
-      "label": "経営レイヤー定例",
+      "label": "経営レイヤー定例【事業版】",
       "notion": {
         "design_page_id": "3c52fd3d-feaf-812a-a701-fc0229567378",
         "minutes_database_id": "e3a4b711-5336-496f-b659-b8dec3460afa",
@@ -68,10 +68,41 @@
       "slack_channel_id": "C07QUGYPW7J",
       "slack_mention": "＠経営メンバー",
       "slack_channel_name": "04-mgmt_ボードと執行役員",
-      "schedule": "月曜 15:00-16:00 JST（週次。2026-08-24の回で隔週から変更）",
+      "schedule": "月曜 15:00-16:00 JST（週次。2026-08-24の回で隔週から変更。2026-11-09に事業版／人事版へ分割、アジェンダは0・1・4のみ）",
       "calendar_title_keywords": [
         "経営レイヤー定例",
         "経営連携会議"
+      ],
+      "calendar_title_exclude": [
+        "人事"
+      ]
+    },
+    "hr-layer": {
+      "label": "経営レイヤー定例【人事版】",
+      "notion": {
+        "design_page_id": "4132fd3d-feaf-81a2-a588-d7511991954c",
+        "minutes_database_id": "79d1ede1-933d-4c1e-9c28-21e2b2bc9b70",
+        "minutes_data_source_url": "collection://27870844-8f1a-41d5-819b-3a340654fb3a",
+        "template_page_id": "4132fd3d-feaf-81a6-b66d-df0395c90048"
+      },
+      "members": [
+        "中井",
+        "久保",
+        "盛島",
+        "山口",
+        "古本",
+        "多加谷",
+        "藤本",
+        "福有"
+      ],
+      "slack_channel_id": "C07QUGYPW7J",
+      "slack_mention": "＠経営メンバー",
+      "slack_channel_name": "04-mgmt_ボードと執行役員",
+      "schedule": "火曜 14:00-15:00 JST（週次）",
+      "calendar_title_keywords": [
+        "経営レイヤーmtg（人事",
+        "経営レイヤー定例（人事",
+        "人事版"
       ],
       "calendar_title_exclude": []
     }
@@ -83,7 +114,9 @@
     "ステータスの語彙が2つのDBで揃っていない。取締役週次定例は 事前記入中/自動生成済/確認済/要修正、経営レイヤー定例は 事前記入中/記録済/確認済。",
     "slack_mode: \"send\" は本投稿、\"draft\" は slack_send_message_draft（下書き）。下書きで様子を見たいときだけ \"draft\" に変える。",
     "exec_digest は取締役週次定例の議事録から、執行役員レイヤーへ共有してよい範囲だけを抜き出して投稿する処理（D-1／D-2）の設定。post_channel_id を空にすると投稿せず、本文の出力だけで終わる。",
-    "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。"
+    "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。",
+    "人事版のカレンダー上の予定名は「経営レイヤーmtg（人事系）」で、「経営レイヤー定例」を含まない。事業版の calendar_title_exclude に「人事」を入れて取り違えを防いでいる。",
+    "hr-layer（人事版）は2026-11-09に exec-layer（事業版）から分けた。Notionの設計ページ・議事録DB・雛形は別。参加者とSlackチャンネルは事業版と同じ。"
   ],
   "slack_mode": "send"
 }
