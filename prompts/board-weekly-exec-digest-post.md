@@ -2,7 +2,7 @@
 
 対象会議：`board-weekly`（取締役週次定例）
 設定：`config/meetings.json` の `meetings.board-weekly.exec_digest`
-実行タイミング：月曜 18:00（`post_time`）。承認の期限は 17:30（`approval_deadline`）で、D-1 の DM にもそう書いてある。
+実行タイミング：木曜 18:00（`post_time`）。承認の期限は 17:30（`approval_deadline`）で、D-1 の DM にもそう書いてある。
 
 D-1 がオーナーへ DM で出した共有案について、**承認が返っているかを確認し、承認されている場合だけ**投稿してください。投稿は **2本**。チャンネルに**本体**を立て、続けてその**スレッドへ「当日の議論の内容」**を投稿します。
 

@@ -11,44 +11,41 @@ CRON_TZ=Asia/Tokyo
 SHELL=/bin/bash
 
 # 会議の開催（カレンダー上の予定名 / JST）
-#   取締役mtg            月曜 10:00-11:00（週次）
+#   取締役週次定例        木曜 11:00-12:00（週次。以前は月曜 10:00。予定名が「取締役mtg」の回もある）
 #   経営レイヤー定例mtg   月曜 15:00-16:00（2026-08-24の回で隔週→週次に変更）
 
-# --- A-1 取締役週次定例：次回分の準備 -------------------------------------
-# 毎週金曜12:00。月曜開催の回に対して、金曜のうちにページを作ってSlackで依頼する。
-0 12 * * 5  cd /path/to/meeting-automation && ./run.sh board-weekly-prep
-
-# --- B-1 取締役週次定例：会議後の議事録生成 -------------------------------
-# 会議終了の1時間後。
-0 12 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes today
-# リトライは火曜08:00にまとめてある（下部を参照）。
+# --- B-1 ＋ A-1 取締役週次定例：議事録生成と次回分のたたき作成 -------------
+# 会議終了の1時間後。B-1（議事録）を先に、続けて A-1（次回ページと持ち帰りの転記）を
+# 同じ実行の中で回す。A-1 の「前回の持ち帰り」は今回の議事録から作るため、順序は固定。
+0 13 * * 4  cd /path/to/meeting-automation && ./run.sh board-weekly-after-meeting today
+# リトライは金曜13:00（下部を参照）。
 
 # --- A-2 ＋ C 経営レイヤー定例：次回分の準備と取締役提案の転記 ------------
-# 毎週金曜12:00。A-1 と同じ枠で回す。記入期限が当日午前中までなので、金曜に出して
-# おけば週末と月曜午前が記入時間になる。
+# 毎週金曜12:00。記入期限が当日午前中までなので、金曜に出しておけば週末と月曜午前が
+# 記入時間になる。
 0 12 * * 5  cd /path/to/meeting-automation && ./run.sh exec-layer-prep
 
 # --- B-2 経営レイヤー定例：会議後の議事録生成 -----------------------------
 0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today
 
 # --- D-1 取締役週次定例：執行役員レイヤーへの共有案と承認依頼 --------------
-# 月曜13:00。B-1（12:00）が議事録を生成した直後。案をオーナーへDMするだけで、
+# 木曜14:00。B-1 ＋ A-1（13:00）が議事録を生成した後。案をオーナーへDMするだけで、
 # チャンネルへは投稿しない。
-0 13 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest today
+0 14 * * 4  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest today
 
 # --- D-2 取締役週次定例：承認を確認して投稿 --------------------------------
-# 月曜18:00。承認が返っていれば本体を投稿し、続けてスレッドへ議論の内容を投稿する。
+# 木曜18:00。承認が返っていれば本体を投稿し、続けてスレッドへ議論の内容を投稿する。
 # 返っていなければ何もしない。承認の期限は17:30（D-1のDMにそう書いてある）。
-0 18 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest-post today
+0 18 * * 4  cd /path/to/meeting-automation && ./run.sh board-weekly-exec-digest-post today
 
-# --- リトライ（両会議まとめて） -------------------------------------------
-# 火曜12:00。文字起こしの生成が遅れて月曜の2本が空振りした場合に、前日分を拾う。
-# 既にステータスが進んでいれば二重実行を避けて終了する。
-0 12 * * 2  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
-15 12 * * 2 cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday
+# --- リトライ -------------------------------------------------------------
+# 文字起こしの生成が遅れて空振りした場合に、前日分を拾う。既にステータスが進んでいれば
+# 二重実行を避けて終了する。取締役週次定例と経営レイヤー定例は曜日が違うので分けてある。
+0 13 * * 5  cd /path/to/meeting-automation && ./run.sh board-weekly-after-meeting yesterday
+0 12 * * 2  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday
 
 # D-1 / D-2 にリトライ枠は置かない。D-2 は対象日の当日を過ぎると投稿しないため、
-# 翌日に走らせても必ず空振りする。月曜17:30までに承認が間に合わなかった回は、
+# 翌日に走らせても必ず空振りする。木曜17:30までに承認が間に合わなかった回は、
 # その週は共有を見送る。どうしても出す場合は手で
 #   ./run.sh board-weekly-exec-digest-post <対象日>
 # を回し、本文の日付表記を確認したうえで投稿すること。
