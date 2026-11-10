@@ -23,13 +23,10 @@ SHELL=/bin/bash
 0 12 * * 1  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes today
 # リトライは火曜08:00にまとめてある（下部を参照）。
 
-# --- A-2 ＋ C 経営レイヤー定例：次回分の準備と取締役提案の転記 ------------
-# 毎週金曜12:00。A-1 と同じ枠で回す。記入期限が当日午前中までなので、金曜に出して
-# おけば週末と月曜午前が記入時間になる。
-0 12 * * 5  cd /path/to/meeting-automation && ./run.sh exec-layer-prep
-
-# --- B-2 経営レイヤー定例：会議後の議事録生成 -----------------------------
-0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today
+# --- B-2 経営レイヤー定例：会議後の議事録生成 → A-2 ＋ C 次回分の準備 --------
+# 月曜17:00。B-2 の直後に A-2 を続けて回す。A-2 は B-2 が埋めた「前回の持ち帰り」
+# 表を次回ページへ写すので、必ず B-2 のあと。B-2 が空振りなら A-2 は何も書かずに終わる。
+0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today; ./run.sh exec-layer-prep today
 
 # --- D-1 取締役週次定例：執行役員レイヤーへの共有案と承認依頼 --------------
 # 月曜13:00。B-1（12:00）が議事録を生成した直後。案をオーナーへDMするだけで、
@@ -45,7 +42,7 @@ SHELL=/bin/bash
 # 火曜12:00。文字起こしの生成が遅れて月曜の2本が空振りした場合に、前日分を拾う。
 # 既にステータスが進んでいれば二重実行を避けて終了する。
 0 12 * * 2  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
-15 12 * * 2 cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday
+15 12 * * 2 cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday; ./run.sh exec-layer-prep yesterday
 
 # D-1 / D-2 にリトライ枠は置かない。D-2 は対象日の当日を過ぎると投稿しないため、
 # 翌日に走らせても必ず空振りする。月曜17:30までに承認が間に合わなかった回は、
