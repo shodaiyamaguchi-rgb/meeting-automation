@@ -95,9 +95,9 @@
         "藤本",
         "福有"
       ],
-      "slack_channel_id": "C07QUGYPW7J",
+      "slack_channel_id": "C0C4BHWM18W",
       "slack_mention": "＠経営メンバー",
-      "slack_channel_name": "04-mgmt_ボードと執行役員",
+      "slack_channel_name": "pj-人事戦略策定",
       "schedule": "火曜 14:00-15:00 JST（週次）",
       "calendar_title_keywords": [
         "経営レイヤーmtg（人事",
@@ -117,7 +117,7 @@
     "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。",
     "人事版のカレンダー上の予定名は「経営レイヤーmtg（人事系）」で、「経営レイヤー定例」を含まない。事業版の calendar_title_exclude に「人事」を入れて取り違えを防いでいる。",
     "hr-layer（人事版）は2026-11-09に exec-layer（事業版）から分けた。Notionの設計ページ・議事録DB・雛形は別。参加者は事業版と同じ。",
-    "2026-11-16 に、経営レイヤー定例【事業版】のSlack投稿先を #05-経営戦略_事業開発（C0BCLSP6Y2H）へ変更した。【人事版】は変更を取りやめ、従来どおり #04-mgmt_ボードと執行役員（C07QUGYPW7J）。取締役週次定例の exec_digest の投稿先も変えていない。"
+    "2026-11-16 に、経営レイヤー定例【事業版】のSlack投稿先を #05-経営戦略_事業開発（C0BCLSP6Y2H）へ、【人事版】を #pj-人事戦略策定（C0C4BHWM18W）へ変更した。取締役週次定例の exec_digest の投稿先（#04-mgmt_ボードと執行役員）は変えていない。"
   ],
   "slack_mode": "send"
 }
