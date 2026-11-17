@@ -14,6 +14,7 @@ meeting-automation/
 │   ├── board-weekly-minutes.md   # B-1 取締役週次定例：会議後の議事録生成とSlack投稿
 │   ├── exec-layer-prep.md        # A-2 ＋ C 経営レイヤー定例：準備と取締役提案の転記
 │   ├── exec-layer-minutes.md     # B-2 経営レイヤー定例：会議後の議事録生成とSlack投稿
+│   ├── hr-layer-minutes.md       # B-3 経営レイヤー定例【人事版】：議事録生成＋次回のたたき作成（1本）
 │   ├── board-weekly-exec-digest.md       # D-1 執行役員レイヤーへの共有案と承認依頼
 │   └── board-weekly-exec-digest-post.md  # D-2 承認を確認して18:00に予約投稿
 ├── config/

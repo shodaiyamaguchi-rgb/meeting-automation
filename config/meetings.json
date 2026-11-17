@@ -74,6 +74,37 @@
         "経営連携会議"
       ],
       "calendar_title_exclude": []
+    },
+    "hr-layer": {
+      "label": "経営レイヤー定例【人事版】",
+      "notion": {
+        "design_page_id": "4132fd3d-feaf-81a2-a588-d7511991954c",
+        "minutes_database_id": "79d1ede1-933d-4c1e-9c28-21e2b2bc9b70",
+        "minutes_data_source_url": "collection://27870844-8f1a-41d5-819b-3a340654fb3a",
+        "template_page_id": "4132fd3d-feaf-81a6-b66d-df0395c90048"
+      },
+      "members": [
+        "中井",
+        "久保",
+        "盛島",
+        "山口",
+        "古本",
+        "多加谷",
+        "藤本",
+        "福有",
+        "宮本"
+      ],
+      "slack_channel_id": "",
+      "slack_mention": "＠経営メンバー",
+      "slack_channel_name": "",
+      "schedule": "火曜 14:00-15:00 JST（週次）",
+      "post_meeting_run": "火曜 16:00 JST。議事録生成の直後に、次回分のたたき（ページ作成と前回の持ち帰りの転記）まで同じ実行で行う",
+      "calendar_title_keywords": [
+        "経営レイヤー定例（人事版）",
+        "経営レイヤー定例【人事版】",
+        "人事版"
+      ],
+      "calendar_title_exclude": []
     }
   },
   "notes": [
@@ -83,7 +114,8 @@
     "ステータスの語彙が2つのDBで揃っていない。取締役週次定例は 事前記入中/自動生成済/確認済/要修正、経営レイヤー定例は 事前記入中/記録済/確認済。",
     "slack_mode: \"send\" は本投稿、\"draft\" は slack_send_message_draft（下書き）。下書きで様子を見たいときだけ \"draft\" に変える。",
     "exec_digest は取締役週次定例の議事録から、執行役員レイヤーへ共有してよい範囲だけを抜き出して投稿する処理（D-1／D-2）の設定。post_channel_id を空にすると投稿せず、本文の出力だけで終わる。",
-    "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。"
+    "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。",
+    "hr-layer は議事録生成（B-3）と次回のたたき作成を1本の処理にまとめている。議事録が記録済になった場合だけ、同じ実行で次回分のページを作る。slack_channel_id が空の間は投稿せず本文を出力する。"
   ],
   "slack_mode": "send"
 }
