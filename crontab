@@ -13,6 +13,7 @@ SHELL=/bin/bash
 # 会議の開催（カレンダー上の予定名 / JST）
 #   取締役mtg            月曜 10:00-11:00（週次）
 #   経営レイヤー定例mtg   月曜 15:00-16:00（2026-08-24の回で隔週→週次に変更）
+#   経営レイヤーmtg（人事系） 火曜 14:00-15:00（週次。事業版とは別の会議体・別のDB）
 
 # --- A-1 取締役週次定例：次回分の準備 -------------------------------------
 # 毎週金曜12:00。月曜開催の回に対して、金曜のうちにページを作ってSlackで依頼する。
@@ -27,6 +28,13 @@ SHELL=/bin/bash
 # 月曜17:00。B-2 の直後に A-2 を続けて回す。A-2 は B-2 が埋めた「前回の持ち帰り」
 # 表を次回ページへ写すので、必ず B-2 のあと。B-2 が空振りなら A-2 は何も書かずに終わる。
 0 17 * * 1  cd /path/to/meeting-automation && ./run.sh exec-layer-minutes today; ./run.sh exec-layer-prep today
+
+# --- B-3 経営レイヤー定例【人事版】：議事録生成 → A-3 次回分の準備 ----------
+# 火曜16:00。会議終了（15:00）の1時間後。B-3 の直後に A-3 を続けて回す。
+# 理由は事業版（B-2 → A-2）と同じで、A-3 は B-3 が埋めた「前回の持ち帰り」表を
+# 次回ページへ写すため、B-3 より前には動かせない。
+# 人事版には処理C（取締役提案の転記）はない。転記は事業版に一本化している。
+0 16 * * 2  cd /path/to/meeting-automation && ./run.sh exec-layer-hr-minutes today; ./run.sh exec-layer-hr-prep today
 
 # --- D-1 取締役週次定例：執行役員レイヤーへの共有案と承認依頼 --------------
 # 月曜13:00。B-1（12:00）が議事録を生成した直後。案をオーナーへDMするだけで、
@@ -43,6 +51,9 @@ SHELL=/bin/bash
 # 既にステータスが進んでいれば二重実行を避けて終了する。
 0 12 * * 2  cd /path/to/meeting-automation && ./run.sh board-weekly-minutes yesterday
 15 12 * * 2 cd /path/to/meeting-automation && ./run.sh exec-layer-minutes yesterday; ./run.sh exec-layer-prep yesterday
+
+# 人事版は火曜開催なので、リトライは水曜12:00に置く。
+0 12 * * 3  cd /path/to/meeting-automation && ./run.sh exec-layer-hr-minutes yesterday; ./run.sh exec-layer-hr-prep yesterday
 
 # D-1 / D-2 にリトライ枠は置かない。D-2 は対象日の当日を過ぎると投稿しないため、
 # 翌日に走らせても必ず空振りする。月曜17:30までに承認が間に合わなかった回は、
