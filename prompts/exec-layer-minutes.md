@@ -15,7 +15,9 @@
 
 ### 1. 文字起こしを取得する
 
-1. Google Calendar の `list_events` で、対象日（00:00〜23:59 JST）の予定を取得する。タイトルが `calendar_title_keywords` の**いずれか1つ**を含む予定を探す。定期予定の名前は途中で変わるため、1つのキーワードで決め打ちしない。
+1. Google Calendar の `list_events` で、対象日（00:00〜23:59 JST）の予定を取得する。タイトルが `calendar_title_keywords` の**いずれか1つ**を含み、かつ `calendar_title_exclude` のどれにも一致しない予定を探す。定期予定の名前は途中で変わるため、1つのキーワードで決め打ちしない。
+
+   **`calendar_title_exclude` の適用は必須。** `calendar_title_keywords` には広めの「経営レイヤー」が入っており、これだけでは**人事版（火曜）の予定まで拾ってしまう。** 除外（人事／人事系／人事版）を必ず効かせること。
 2. 予定が見つからない場合は、**その旨だけ報告して終了する。** Notionには何も書かない。
 3. 予定の `attachments` から文字起こしを探す。Meetは通常2つ添付する。
 

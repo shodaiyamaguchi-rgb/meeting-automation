@@ -71,9 +71,15 @@
       "schedule": "月曜 15:00-16:00 JST（週次。2026-08-24の回で隔週から変更）",
       "calendar_title_keywords": [
         "経営レイヤー定例",
-        "経営連携会議"
+        "経営連携会議",
+        "経営レイヤーmtg（事業）",
+        "経営レイヤー"
       ],
-      "calendar_title_exclude": []
+      "calendar_title_exclude": [
+        "人事",
+        "人事系",
+        "人事版"
+      ]
     },
     "hr-layer": {
       "label": "経営レイヤー定例【人事版】",
@@ -94,17 +100,23 @@
         "福有",
         "宮本"
       ],
-      "slack_channel_id": "",
+      "slack_channel_id": "C07QUGYPW7J",
       "slack_mention": "＠経営メンバー",
-      "slack_channel_name": "",
+      "slack_channel_name": "04-mgmt_ボードと執行役員",
       "schedule": "火曜 14:00-15:00 JST（週次）",
       "post_meeting_run": "火曜 16:00 JST。議事録生成の直後に、次回分のたたき（ページ作成と前回の持ち帰りの転記）まで同じ実行で行う",
       "calendar_title_keywords": [
+        "経営レイヤーmtg（人事系）",
         "経営レイヤー定例（人事版）",
         "経営レイヤー定例【人事版】",
+        "人事系",
         "人事版"
       ],
-      "calendar_title_exclude": []
+      "calendar_title_exclude": [
+        "事業",
+        "事業編",
+        "事業版"
+      ]
     }
   },
   "notes": [
@@ -115,7 +127,10 @@
     "slack_mode: \"send\" は本投稿、\"draft\" は slack_send_message_draft（下書き）。下書きで様子を見たいときだけ \"draft\" に変える。",
     "exec_digest は取締役週次定例の議事録から、執行役員レイヤーへ共有してよい範囲だけを抜き出して投稿する処理（D-1／D-2）の設定。post_channel_id を空にすると投稿せず、本文の出力だけで終わる。",
     "exec_digest の投稿は slack_mode の値にかかわらず、必ず承認を経てから行う。D-1 が案をDMで出し、D-2 が承認を確認してから予約投稿する。",
-    "hr-layer は議事録生成（B-3）と次回のたたき作成を1本の処理にまとめている。議事録が記録済になった場合だけ、同じ実行で次回分のページを作る。slack_channel_id が空の間は投稿せず本文を出力する。"
+    "hr-layer は議事録生成（B-3）と次回のたたき作成を1本の処理にまとめている。議事録が記録済になった場合だけ、同じ実行で次回分のページを作る。slack_channel_id が空の間は投稿せず本文を出力する。",
+    "カレンダー上の予定名は3回変わっている（経営レイヤー定例mtg → 経営レイヤー定例（事業編）mtg → 2026-11-26の振替回は 経営レイヤーmtg（事業））。そのため exec-layer は広めの「経営レイヤー」を keyword に入れ、人事版を calendar_title_exclude（人事／人事系／人事版）で弾く方式にした。個別名も残してあるのは経緯を読めるようにするため。",
+    "人事版の実際の予定名は「経営レイヤーmtg（人事系）」。hr-layer の keyword はこれを含み、事業版を calendar_title_exclude（事業／事業編／事業版）で弾く。exec-layer と hr-layer は互いの予定名を除外し合う関係にあるので、どちらかの keyword を広げるときは、もう一方の exclude も必ず見直すこと。",
+    "hr-layer の slack_channel_id は事業版と同じ 04-mgmt_ボードと執行役員（C07QUGYPW7J）。同じチャンネルに両方が流れるため、人事版の投稿は見出しに「（人事版）」を必ず入れる。"
   ],
   "slack_mode": "send"
 }

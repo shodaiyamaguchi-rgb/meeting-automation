@@ -21,7 +21,9 @@
 
 ### 1. 次回開催を確認する
 
-1. Google Calendar の `list_events` で、`TARGET_DATE` の翌日 00:00 から10日先までを対象に予定を取得し、タイトルが `calendar_title_keywords` の**いずれか1つ**を含む予定を探す。いちばん近い1件を次回開催とする。`TARGET_DATE` 当日の回（いま終わった回）は次回に数えない。
+1. Google Calendar の `list_events` で、`TARGET_DATE` の翌日 00:00 から10日先までを対象に予定を取得し、タイトルが `calendar_title_keywords` の**いずれか1つ**を含み、かつ `calendar_title_exclude` のどれにも一致しない予定を探す。いちばん近い1件を次回開催とする。`TARGET_DATE` 当日の回（いま終わった回）は次回に数えない。
+
+   **`calendar_title_exclude` の適用は必須。** `calendar_title_keywords` の「経営レイヤー」は広いため、除外を効かせないと**人事版（火曜）の回を次回と誤認する。**
 
    **定期予定の名前は途中で変わる。** 1つのキーワードで決め打ちしない。`list_events` の `fullText` は曖昧検索で期待どおりに絞れないことがあるため、期間で全件取得してタイトルで自分で絞るほうが確実。
 2. 次回予定が見つからない場合は、**その旨だけ報告して終了する。**
